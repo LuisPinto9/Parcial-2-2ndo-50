@@ -22,7 +22,7 @@ async function start() {
   app.set("PORT", process.env.PORT || 3000);
 
   app.use("/", (req, res) =>
-    res.json({ response: "Back del proyecto de creación y consumo de APIs" })
+    res.json({ response: "Middleware de parcial" })
   );
 
   const port = app.get("PORT");
