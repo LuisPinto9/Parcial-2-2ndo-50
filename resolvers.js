@@ -1,36 +1,48 @@
+const apiURL = "https://back-proyecto-1er50-electiva-ii.vercel.app";
+
 const resolvers = {
   Query: {
     getAllClient: async () => {
-      return null;
+      try {
+        const response = await fetch(apiURL + "/client");
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        return data.data;
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        throw error;
+      }
     },
     getClientByID: async (_, args) => {
-      return null
+      return null;
     },
     getAllReservations: async () => {
-      return null
+      return null;
     },
     getReservationById: async (_, args) => {
-      return null
+      return null;
     },
   },
   Mutation: {
     createClient: async (_, args) => {
-      return null
+      return null;
     },
     deleteClient: async (_, args) => {
-      return null
+      return null;
     },
     updateClient: async (_, args) => {
       return null;
     },
     createReservation: async (_, args) => {
-      return null
+      return null;
     },
     deleteReservation: async (_, args) => {
       return null;
     },
     updateReservation: async (_, args) => {
-      return null
+      return null;
     },
   },
 };
