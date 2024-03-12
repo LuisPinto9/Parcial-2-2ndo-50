@@ -4,7 +4,6 @@ const { ApolloServer } = require("apollo-server-express");
 const { typeDefs } = require("./typeDef");
 const { resolvers } = require("./resolvers");
 
-require("dotenv").config();
 require("./drivers/conect-db");
 
 const app = express();
