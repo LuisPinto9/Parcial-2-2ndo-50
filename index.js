@@ -4,8 +4,6 @@ const { ApolloServer } = require("apollo-server-express");
 const { typeDefs } = require("./typeDef");
 const { resolvers } = require("./resolvers");
 
-require("./drivers/conect-db");
-
 const app = express();
 
 async function start() {
