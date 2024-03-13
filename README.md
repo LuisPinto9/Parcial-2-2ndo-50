@@ -3,7 +3,9 @@
 
 http://localhost:3000/
 
-
+primero ingresar an sandbox de graphql:
+https://studio.apollographql.com/sandbox/explorer
+despues colocar el siguiente link en el sandbox
 https://parcial-2-2ndo-50.vercel.app/graphql
 
 
