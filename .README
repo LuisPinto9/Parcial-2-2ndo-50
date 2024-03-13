@@ -4,7 +4,7 @@
 http://localhost:3000/
 
 
-https://parcial-2-2ndo-50.vercel.app
+https://parcial-2-2ndo-50.vercel.app/graphql
 
 
 ## Integrantes
@@ -37,4 +37,4 @@ Para POST, PUT y DELETE respectivamente
 Para POST, PUT y DELETE respectivamente
 - /reservation/{id} Envia y guarda los datos ingresados
 - /reservation/{id} Actualiza el id con los datos ingresados
-- /reservation/{id} Elimina los datos con el id ingresado
+- /reservation/{_id} Elimina los datos con el id ingresado
