@@ -79,7 +79,28 @@ const resolvers = {
       return null;
     },
     createReservation: async (_, args) => {
-      return null;
+      try {
+        const response = await fetch(`${apiURL}/reservation`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            id,
+            name,
+            celphone,
+            email
+          }),
+        });
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        return data.data;
+      } catch (error) {
+        console.error('Error creating client:', error);
+        throw error;
+      }
     },
     deleteReservation: async (_, args) => {
       return null;
