@@ -16,7 +16,17 @@ const resolvers = {
       }
     },
     getClientByID: async (_, args) => {
-      return null;
+      try {
+        const response = await fetch(`${apiURL}/client/${id}`);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        return data.data;
+      } catch (error) {
+        console.error(`Error fetching client with ID ${id}:`, error);
+        throw error;
+      }
     },
     getAllReservations: async () => {
       return null;
@@ -26,9 +36,32 @@ const resolvers = {
     },
   },
   Mutation: {
-    createClient: async (_, args) => {
-      return null;
+    createClient: async (_, { id, name, celphone, email }) => {
+      try {
+        const response = await fetch(`${apiURL}/client`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            id,
+            name,
+            celphone,
+            email
+          }),
+        });
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        return data.data;
+      } catch (error) {
+        console.error('Error creating client:', error);
+        throw error;
+      }
     },
+
+  
     deleteClient: async (_, args) => {
       return null;
     },
