@@ -10,6 +10,7 @@ const typeDefs = gql`
   }
 
   type Reservation {
+    _id: String
     id: ID!
     bookingStartDate: String!
     bookingEndDate: String!

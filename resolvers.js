@@ -42,7 +42,17 @@ const resolvers = {
       }
     },
     getReservationById: async (_, args) => {
-      return null;
+      try {
+        const response = await fetch(apiURL + `/reservation/${args.id}`);
+        if (response == null) {
+          throw new Error("No encontrado");
+        }
+        const data = await response.json();
+        return data.data;
+      } catch (error) {
+        console.error(`Error fetching client with ID ${args.id}:`, error);
+        throw error;
+      }
     },
   },
   Mutation: {
