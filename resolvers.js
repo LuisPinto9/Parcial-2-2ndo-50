@@ -19,7 +19,17 @@ const resolvers = {
       return null;
     },
     getAllReservations: async () => {
-      return null;
+      try {
+        const response = await fetch(apiURL + "/reservation");
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        return data.data;
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        throw error;
+      }
     },
     getReservationById: async (_, args) => {
       return null;
