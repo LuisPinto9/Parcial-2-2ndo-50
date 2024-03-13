@@ -84,22 +84,25 @@ const resolvers = {
     deleteClient: async (_, { _id }) => {
       try {
         const response = await fetch(`${apiURL}/client/${_id}`, {
-          method: 'DELETE',
+          method: "DELETE",
         });
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         const data = await response.json();
         return data.data;
       } catch (error) {
-        console.error('no se puedo borrar cliente:', error);
+        console.error("no se puedo borrar cliente:", error);
         throw error;
       }
     },
     updateClient: async (_, args) => {
       return null;
     },
-    createReservation: async (_, args) => {
+    createReservation: async (
+      _,
+      { bookingStartDate, bookingEndDate, service, idClient, id }
+    ) => {
       try {
         const response = await fetch(`${apiURL}/reservation`, {
           method: "POST",
@@ -107,10 +110,11 @@ const resolvers = {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
+            bookingStartDate,
+            bookingEndDate,
+            service,
+            idClient,
             id,
-            name,
-            celphone,
-            email,
           }),
         });
         if (!response.ok) {
@@ -124,7 +128,19 @@ const resolvers = {
       }
     },
     deleteReservation: async (_, args) => {
-      return null;
+      try {
+        const response = await fetch(apiURL + `/reservation/${args.id}`, {
+          method: "DELETE",
+        });
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        return data.data;
+      } catch (error) {
+        console.error("no se puedo borrar cliente:", error);
+        throw error;
+      }
     },
     updateReservation: async (_, args) => {
       return null;
