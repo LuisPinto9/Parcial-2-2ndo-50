@@ -46,7 +46,7 @@ const typeDefs = gql`
 
     deleteClient(id: ID!): Client
 
-    deleteReservation(id: ID!): Reservation
+    deleteClient(_id: String): Client
 
     updateClient(id: ID!, name: String, celphone: String, email: String): Client
 

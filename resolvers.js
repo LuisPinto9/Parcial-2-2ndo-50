@@ -81,8 +81,20 @@ const resolvers = {
       }
     },
 
-    deleteClient: async (_, args) => {
-      return null;
+    deleteClient: async (_, { _id }) => {
+      try {
+        const response = await fetch(`${apiURL}/client/${_id}`, {
+          method: 'DELETE',
+        });
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        return data.data;
+      } catch (error) {
+        console.error('no se puedo borrar cliente:', error);
+        throw error;
+      }
     },
     updateClient: async (_, args) => {
       return null;

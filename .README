@@ -31,7 +31,7 @@ Para GET reservas:
 Para POST, PUT y DELETE respectivamente
 - /client/{id} Envia y guarda los datos ingresados
 - /client/{id} Actualiza el id con los datos ingresados
-- /client/{id} Elimina los datos con el id ingresado
+- /client/{_id} Elimina los datos con el id ingresado
 
 
 Para POST, PUT y DELETE respectivamente
