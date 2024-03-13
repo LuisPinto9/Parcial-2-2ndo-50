@@ -6,25 +6,25 @@ const resolvers = {
       try {
         const response = await fetch(apiURL + "/client");
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         const data = await response.json();
         return data.data;
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
         throw error;
       }
     },
     getClientByID: async (_, args) => {
       try {
-        const response = await fetch(`${apiURL}/client/${id}`);
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
+        const response = await fetch(apiURL + `/client/ById/${args.id}`);
+        if (response == null) {
+          throw new Error("No encontrado");
         }
         const data = await response.json();
         return data.data;
       } catch (error) {
-        console.error(`Error fetching client with ID ${id}:`, error);
+        console.error(`Error fetching client with ID ${args.id}:`, error);
         throw error;
       }
     },
@@ -32,12 +32,12 @@ const resolvers = {
       try {
         const response = await fetch(apiURL + "/reservation");
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         const data = await response.json();
         return data.data;
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
         throw error;
       }
     },
@@ -49,29 +49,28 @@ const resolvers = {
     createClient: async (_, { id, name, celphone, email }) => {
       try {
         const response = await fetch(`${apiURL}/client`, {
-          method: 'POST',
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({
             id,
             name,
             celphone,
-            email
+            email,
           }),
         });
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         const data = await response.json();
         return data.data;
       } catch (error) {
-        console.error('Error creating client:', error);
+        console.error("Error creating client:", error);
         throw error;
       }
     },
 
-  
     deleteClient: async (_, args) => {
       return null;
     },
@@ -81,24 +80,24 @@ const resolvers = {
     createReservation: async (_, args) => {
       try {
         const response = await fetch(`${apiURL}/reservation`, {
-          method: 'POST',
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({
             id,
             name,
             celphone,
-            email
+            email,
           }),
         });
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         const data = await response.json();
         return data.data;
       } catch (error) {
-        console.error('Error creating client:', error);
+        console.error("Error creating client:", error);
         throw error;
       }
     },
